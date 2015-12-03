@@ -27,6 +27,7 @@ CullingSet::~CullingSet()
 
 void CullingSet::disableAndPushOccludersCurrentMask(NodePath& nodePath)
 {
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
     for(OccluderList::iterator itr=_occluderList.begin();
         itr!=_occluderList.end();
         ++itr)
@@ -42,11 +43,13 @@ void CullingSet::disableAndPushOccludersCurrentMask(NodePath& nodePath)
             itr->pushCurrentMask();
         }
     }
+#endif
 }
 
 
 void CullingSet::popOccludersCurrentMask(NodePath& nodePath)
 {
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
     //std::cout<<"  trying to pop occluder ";PrintNodePath(nodePath);std::cout<<std::endl;
     for(OccluderList::iterator itr=_occluderList.begin();
         itr!=_occluderList.end();
@@ -62,6 +65,7 @@ void CullingSet::popOccludersCurrentMask(NodePath& nodePath)
             itr->popCurrentMask();
         }
     }
+#endif
 }
 
 osg::Vec4 CullingSet::computePixelSizeVector(const Viewport& W, const Matrix& P, const Matrix& M)

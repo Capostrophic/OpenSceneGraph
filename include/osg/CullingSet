@@ -41,7 +41,9 @@ class OSG_EXPORT CullingSet : public Referenced
             _mask(cs._mask),
             _frustum(cs._frustum),
             _stateFrustumList(cs._stateFrustumList),
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             _occluderList(cs._occluderList),
+#endif
             _pixelSizeVector(cs._pixelSizeVector),
             _smallFeatureCullingPixelSize(cs._smallFeatureCullingPixelSize)
         {
@@ -51,17 +53,21 @@ class OSG_EXPORT CullingSet : public Referenced
             _mask(cs._mask),
             _frustum(cs._frustum),
             _stateFrustumList(cs._stateFrustumList),
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             _occluderList(cs._occluderList),
+#endif
             _pixelSizeVector(pixelSizeVector),
             _smallFeatureCullingPixelSize(cs._smallFeatureCullingPixelSize)
         {
             _frustum.transformProvidingInverse(matrix);
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             for(OccluderList::iterator itr=_occluderList.begin();
                 itr!=_occluderList.end();
                 ++itr)
             {
                 itr->transformProvidingInverse(matrix);
             }
+#endif
         }
 
         CullingSet& operator = (const CullingSet& cs)
@@ -71,7 +77,9 @@ class OSG_EXPORT CullingSet : public Referenced
             _mask = cs._mask;
             _frustum = cs._frustum;
             _stateFrustumList = cs._stateFrustumList;
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             _occluderList = cs._occluderList;
+#endif
             _pixelSizeVector = cs._pixelSizeVector;
             _smallFeatureCullingPixelSize = cs._smallFeatureCullingPixelSize;
 
@@ -84,7 +92,9 @@ class OSG_EXPORT CullingSet : public Referenced
             _mask = cs._mask;
             _frustum = cs._frustum;
             _stateFrustumList = cs._stateFrustumList;
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             _occluderList = cs._occluderList;
+#endif
             _pixelSizeVector = cs._pixelSizeVector;
             _smallFeatureCullingPixelSize = cs._smallFeatureCullingPixelSize;
         }
@@ -93,7 +103,9 @@ class OSG_EXPORT CullingSet : public Referenced
         {
             _mask = cs._mask;
             _stateFrustumList = cs._stateFrustumList;
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             _occluderList = cs._occluderList;
+#endif
             _pixelSizeVector = pixelSizeVector;
             _smallFeatureCullingPixelSize = cs._smallFeatureCullingPixelSize;
 
@@ -109,12 +121,14 @@ class OSG_EXPORT CullingSet : public Referenced
                 sitr->second.transformProvidingInverse(matrix);
             }
 
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             for(OccluderList::iterator oitr=_occluderList.begin();
                 oitr!=_occluderList.end();
                 ++oitr)
             {
                 oitr->transformProvidingInverse(matrix);
             }
+#endif
 
         }
 
@@ -154,8 +168,11 @@ class OSG_EXPORT CullingSet : public Referenced
         void getStateFrustumList(StateFrustumList& sfl) { _stateFrustumList = sfl; }
         StateFrustumList& getStateFrustumList() { return _stateFrustumList; }
 
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
         void addOccluder(ShadowVolumeOccluder& cv) { _occluderList.push_back(cv); }
-
+#else
+        void addOccluder(ShadowVolumeOccluder& /*cv*/) {}
+#endif
         void setPixelSizeVector(const Vec4& v) { _pixelSizeVector = v; }
 
         Vec4& getPixelSizeVector() { return _pixelSizeVector; }
@@ -195,6 +212,7 @@ class OSG_EXPORT CullingSet : public Referenced
             {
             }
 
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             if (_mask&SHADOW_OCCLUSION_CULLING)
             {
                 // is it in one of the shadow occluder volumes.
@@ -208,6 +226,7 @@ class OSG_EXPORT CullingSet : public Referenced
                     }
                 }
             }
+#endif
 
             return false;
         }
@@ -224,6 +243,7 @@ class OSG_EXPORT CullingSet : public Referenced
             {
             }
 
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
             if (_mask&SHADOW_OCCLUSION_CULLING)
             {
                 // is it in one of the shadow occluder volumes.
@@ -237,6 +257,7 @@ class OSG_EXPORT CullingSet : public Referenced
                     }
                 }
             }
+#endif
 
             return false;
         }
@@ -346,7 +367,9 @@ class OSG_EXPORT CullingSet : public Referenced
         Mask                _mask;
         Polytope            _frustum;
         StateFrustumList    _stateFrustumList;
+#ifdef COMPILE_WITH_SHADOW_OCCLUSION_CULLING
         OccluderList        _occluderList;
+#endif
         Vec4                _pixelSizeVector;
         float               _smallFeatureCullingPixelSize;
 
