@@ -1,3 +1,19 @@
+# "OSG on steroids"
+
+This fork was originally created to experiment with performance enhancements for [OpenMW](https://github.com/OpenMW/openmw) that had been potentially too controversial to be included in the general purpose OSG project - either for design reasons or backward compatibility reasons.
+
+Since then most of them were put in upstream OSG in one form or another, but some of the changes are still very much valid for OpenMW specifically.
+
+OpenMW still works with "vanilla" OpenSceneGraph, but it is recommended to use the fork for better performance.
+
+The fork is currently based on the OpenSceneGraph-3.6 branch and will continue to be based on the latest stable branch of OSG at the time.
+
+A list of all changes can be viewed [here](https://github.com/openscenegraph/OpenSceneGraph/compare/OpenSceneGraph-3.6...OpenMW:3.6).
+
+The original OpenSceneGraph read me and credits follow below.
+
+---
+
 [![Build Status](https://travis-ci.org/openscenegraph/OpenSceneGraph.svg?branch=master)](https://travis-ci.org/openscenegraph/OpenSceneGraph)
 [![Coverity Status](https://scan.coverity.com/projects/9159/badge.svg)](https://scan.coverity.com/projects/openscenegraph-openscenegraph)
 [![Documentation](https://codedocs.xyz/openscenegraph/OpenSceneGraph.svg)](https://codedocs.xyz/openscenegraph/OpenSceneGraph/)
