@@ -425,10 +425,10 @@ OPTION(OSG_NOTIFY_DISABLED "Set to ON to build OpenSceneGraph with the notify() 
 
 OPTION(OSG_USE_DEPRECATED_API "Set to ON to build OpenSceneGraph with the OSG_USE_DEPREFATED_API #define enabled to allow access to deprecated APIs ." ON)
 
-OPTION(OSG_USE_FLOAT_MATRIX "Set to ON to build OpenSceneGraph with float Matrix instead of double." OFF)
+OPTION(OSG_USE_FLOAT_MATRIX "Set to ON to build OpenSceneGraph with float Matrix instead of double." ON)
 MARK_AS_ADVANCED(OSG_USE_FLOAT_MATRIX)
 
-OPTION(OSG_USE_FLOAT_PLANE "Set to ON to build OpenSceneGraph with float Plane instead of double." OFF)
+OPTION(OSG_USE_FLOAT_PLANE "Set to ON to build OpenSceneGraph with float Plane instead of double." ON)
 MARK_AS_ADVANCED(OSG_USE_FLOAT_PLANE)
 
 OPTION(OSG_USE_FLOAT_BOUNDINGSPHERE "Set to ON to build OpenSceneGraph with float BoundingSphere instead of double." ON)
@@ -437,7 +437,7 @@ MARK_AS_ADVANCED(OSG_USE_FLOAT_BOUNDINGSPHERE)
 OPTION(OSG_USE_FLOAT_BOUNDINGBOX "Set to ON to build OpenSceneGraph with float BoundingBox instead of double." ON)
 MARK_AS_ADVANCED(OSG_USE_FLOAT_BOUNDINGBOX)
 
-OPTION(OSG_USE_FLOAT_QUAT "Set to ON to build OpenSceneGraph with float Quat instead of double." OFF)
+OPTION(OSG_USE_FLOAT_QUAT "Set to ON to build OpenSceneGraph with float Quat instead of double." ON)
 MARK_AS_ADVANCED(OSG_USE_FLOAT_QUAT)
 
 IF (WIN32)
