@@ -857,6 +857,7 @@ GLExtensions::GLExtensions(unsigned int in_contextID):
     isTextureCompressionETC2Supported = validContext && isGLExtensionSupported(contextID,"GL_ARB_ES3_compatibility");
     isTextureCompressionRGTCSupported = validContext && isGLExtensionSupported(contextID,"GL_EXT_texture_compression_rgtc");
     isTextureCompressionPVRTCSupported = validContext && isGLExtensionSupported(contextID,"GL_IMG_texture_compression_pvrtc");
+    isTextureCompressionBPTCSupported = validContext && isGLExtensionSupported(contextID,"GL_ARB_texture_compression_bptc");
 
     isTextureMirroredRepeatSupported = validContext &&
                                        (builtInSupport ||

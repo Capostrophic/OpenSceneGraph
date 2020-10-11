@@ -521,6 +521,7 @@ class OSG_EXPORT GLExtensions : public osg::Referenced
         bool isTextureCompressionETC2Supported;
         bool isTextureCompressionRGTCSupported;
         bool isTextureCompressionPVRTCSupported;
+        bool isTextureCompressionBPTCSupported;
         bool isTextureMirroredRepeatSupported;
         bool isTextureEdgeClampSupported;
         bool isTextureBorderClampSupported;

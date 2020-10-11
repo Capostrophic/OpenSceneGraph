@@ -71,6 +71,13 @@
   #define GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT   0x8DBE
 #endif
 
+#ifndef GL_ARB_texture_compression_bptc
+  #define GL_COMPRESSED_RGBA_BPTC_UNORM             0x8E8C
+  #define GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM       0x8E8D
+  #define GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT       0x8E8E
+  #define GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT     0x8E8F
+#endif
+
 #ifndef GL_IMG_texture_compression_pvrtc
     #define GL_COMPRESSED_RGB_PVRTC_4BPPV1_IMG      0x8C00
     #define GL_COMPRESSED_RGB_PVRTC_2BPPV1_IMG      0x8C01
@@ -592,7 +599,8 @@ class OSG_EXPORT Texture : public osg::StateAttribute
             USE_RGTC1_COMPRESSION,
             USE_RGTC2_COMPRESSION,
             USE_S3TC_DXT1c_COMPRESSION,
-            USE_S3TC_DXT1a_COMPRESSION
+            USE_S3TC_DXT1a_COMPRESSION,
+            USE_BPTC_COMPRESSION
         };
 
         /** Sets the internal texture format mode. Note: If the texture format is
